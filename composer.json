@@ -1,0 +1,36 @@
+{
+    "name": "fivelab/reflection",
+    "description": "Tools for work with reflection",
+    "keywords": [ "reflection", "annotation" ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitaliy Zhuk",
+            "email": "v.zhuk@fivelab.org"
+        },
+
+        {
+            "name": "FiveLab Team",
+            "email": "dev@fivelab.org",
+            "homepage": "http://fivelab.org"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.4"
+    },
+
+    "require-dev": {
+        "doctrine/annotations": "1.*",
+        "phpunit/phpunit": "4.*"
+    },
+
+    "autoload": {
+        "psr-4": { "FiveLab\\Component\\Reflection\\": "src/" }
+    },
+
+    "config": {
+        "bin-dir": "./bin/"
+    }
+}
