@@ -26,6 +26,10 @@
         "phpunit/phpunit": "4.*"
     },
 
+    "suggest": {
+        "doctrine/annotations": "For read annotations from classes"
+    },
+
     "autoload": {
         "psr-4": { "FiveLab\\Component\\Reflection\\": "src/" }
     },
