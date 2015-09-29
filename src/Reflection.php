@@ -109,6 +109,42 @@ final class Reflection
     }
 
     /**
+     * Load property reflection
+     *
+     * @param object $object
+     * @param string $property
+     * @param bool   $searchInParents
+     *
+     * @return \ReflectionProperty
+     *
+     * @throws \ReflectionException
+     */
+    public static function loadPropertyReflection($object, $property, $searchInParents = true)
+    {
+        $reflection = self::loadClassReflection($object);
+
+        if (!$searchInParents) {
+            return $reflection->getProperty($property);
+        }
+
+        $exception = null;
+
+        do {
+            try {
+                $reflectionProperty = $reflection->getProperty($property);
+
+                return $reflectionProperty;
+            } catch (\ReflectionException $e) {
+                if (!$exception) {
+                    $exception = $e;
+                }
+            }
+        } while ($reflection = $reflection->getParentClass());
+
+        throw $exception;
+    }
+
+    /**
      * Get called method from abstract reflection function
      *
      * @param \ReflectionFunctionAbstract $method
